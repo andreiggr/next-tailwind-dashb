@@ -1,7 +1,9 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import Image from "next/image";
+import { useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import AssetContent from './AssetContent';
 
 export interface Asset {
   id: string;
@@ -44,44 +46,16 @@ export default function AssetCard({ asset }: AssetCardProps) {
             >
               ✕
             </button>
-            <h2 className="text-2xl font-bold mb-2">{asset.title}</h2>
-            <p className="mb-4 text-gray-700">{asset.description}</p>
 
-            <div className="flex flex-wrap gap-2 mb-4">
-              {asset.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="text-xs bg-gray-100 px-2 py-1 rounded"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
+            <AssetContent asset={asset} />
 
-            <ul className="text-sm text-gray-600 space-y-1 mb-6">
-              <li>
-                <strong>Used:</strong> {asset.used}
-              </li>
-              <li>
-                <strong>Type:</strong> {asset.type}
-              </li>
-              <li>
-                <strong>Pages:</strong> {asset.pages}
-              </li>
-              <li>
-                <strong>Last Updated:</strong>{" "}
-                {new Date(asset.lastUpdated).toLocaleDateString()}
-              </li>
-            </ul>
-
-            <div className="h-40 bg-gray-50 rounded mb-6 flex items-center justify-center text-gray-400">
-              KPI Chart Placeholder
-            </div>
-
-            <div className="flex space-x-4">
-              <button className="flex-1 px-4 py-2 bg-blue-600 text-white rounded">
+            <div className="flex space-x-4 mt-6">
+              <Link
+                href={`/asset/${asset.id}`}
+                className="flex-1 px-4 py-2 bg-blue-600 text-white rounded text-center"
+              >
                 View Full Asset
-              </button>
+              </Link>
               <button className="flex-1 px-4 py-2 border border-gray-300 rounded">
                 Favorite
               </button>
