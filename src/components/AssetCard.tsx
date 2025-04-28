@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { Link as LinkIcon, Tag } from 'lucide-react';
-import AssetContent from './AssetContent';
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { Link as LinkIcon, Tag } from "lucide-react";
+import AssetContent from "./AssetContent";
 
 export interface Asset {
   id: string;
@@ -49,28 +49,30 @@ export default function AssetCard({ asset }: AssetCardProps) {
       {isOpen && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
           <div className="relative bg-white rounded-lg shadow-xl max-w-2xl w-full p-8">
-            <button className="absolute top-4 right-12 text-gray-500 hover:text-gray-700">
-              <LinkIcon size={20} />
-            </button>
-            <button
-              onClick={() => setIsOpen(false)}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
-            >
-              ✕
-            </button>
+            <div className="absolute top-4 right-4">
+              <button className="text-gray-500 hover:text-gray-700 mr-6">
+                <LinkIcon size={15} />
+              </button>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="text-gray-500 hover:text-gray-700"
+              >
+                ✕
+              </button>
+            </div>
 
             <AssetContent asset={asset} />
 
             <div className="mt-8 space-y-4">
               <Link
                 href={`/asset/${asset.id}`}
-                className="block w-full text-center px-4 py-2 bg-blue-600 text-white rounded"
+                className="block w-full text-center px-4 py-2 bg-gray-900 text-white rounded"
               >
-                View Full Asset
+                View item
               </Link>
               <button className="flex items-center justify-center w-full px-4 py-2 bg-gray-900 text-white rounded">
                 <Tag size={16} className="mr-2" />
-                Favorite
+                Favorite item
               </button>
             </div>
           </div>

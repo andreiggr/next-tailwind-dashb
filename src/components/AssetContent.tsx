@@ -59,14 +59,16 @@ export default function AssetContent({ asset }: AssetContentProps) {
         </li>
         <li className="flex-1 px-4">
           <div className="text-xl font-semibold">{asset.pages}</div>
-          <div className="mt-1 text-sm">Pages No.</div>
+          <div className="mt-1 text-sm inline-flex items-center justify-center">
+            Pages No. <Info size={14} className="ml-1 text-gray-400" />
+          </div>
         </li>
         <li className="flex-1 px-4">
           <div className="text-xl font-semibold">
-            {new Date(asset.lastUpdated).toLocaleDateString('en-US', {
-              month: '2-digit',
-              day: '2-digit',
-              year: 'numeric',
+            {new Date(asset.lastUpdated).toLocaleDateString("en-US", {
+              month: "2-digit",
+              day: "2-digit",
+              year: "numeric",
             })}
           </div>
           <div className="mt-1 text-sm">Last Updated</div>
